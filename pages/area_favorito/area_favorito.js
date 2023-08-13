@@ -177,6 +177,14 @@ const buildClienteArea = () =>{
 
                 closeLoading();
             }
+            else {
+                cardsBarbeariaWrapper.closest('#area-favorito').classList.add('area-favorito-no-content')
+                cardsBarbeariaWrapper.innerHTML = `
+                    <h2>Ainda não há favoritos</h2>
+                `;
+
+                closeLoading();
+            }
         }
     });
 };

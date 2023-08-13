@@ -1,3 +1,7 @@
+#area-cliente {
+    flex: 1;
+}
+
 .area-cliente {
     margin-top: 2rem;
     justify-content: center;
@@ -56,6 +60,18 @@
 
 .area-cliente-card .card-title {
     font-size: 20px;
+}
+
+.area-cliente-no-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-cliente-no-content h2 {
+   font-weight: 700;
+   color: var(--white);
 }
 
 #modal-perfil .modal-content input {

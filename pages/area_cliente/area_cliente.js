@@ -177,6 +177,14 @@ const buildClienteArea = () =>{
 
                 closeLoading();
             }
+            else {
+                cardsBarbeariaWrapper.closest('#area-favorito').classList.add('area-cliente-no-content')
+                cardsBarbeariaWrapper.innerHTML = `
+                    <h2>Ainda não há barbearias</h2>
+                `;
+
+                closeLoading();
+            }
         }
     });
 };
