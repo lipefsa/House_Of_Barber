@@ -34,12 +34,56 @@
                             'FECHADO'
                     END AS status_funcionamento,
                     IF(dias_funcionamento.horario_abertura IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_abertura, '%H:%i'), 'FECHADO') AS horario_abertura,
-                    IF(dias_funcionamento.horario_fechamento IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_fechamento, '%H:%i'), 'FECHADO') AS horario_fechamento
+                    IF(dias_funcionamento.horario_fechamento IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_fechamento, '%H:%i'), 'FECHADO') AS horario_fechamento,
+                    IF(favorito.estabelecimento_id IS NOT NULL, 'true', 'false') AS estabelecimento_favorito
                 FROM estabelecimento
                 LEFT JOIN endereco
                 ON estabelecimento.id = endereco.estabelecimento_id
                 LEFT JOIN dias_funcionamento
                 ON (estabelecimento.id = dias_funcionamento.estabelecimento_id AND dias_funcionamento.dia = WEEKDAY(DATE(NOW())))
+                LEFT JOIN favorito
+                ON estabelecimento.id = favorito.estabelecimento_id
+            ";
+
+            $estabelecimentos = $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+
+            return $estabelecimentos;
+        }
+
+        public function getAllFavorites(): array
+        {
+            $query = "SELECT 
+                    estabelecimento.id AS estabelecimento_id,
+                    estabelecimento.nome,
+                    estabelecimento.tipo,
+                    estabelecimento.telefone,
+                    estabelecimento.cnpj,
+                    estabelecimento.foto_perfil,
+                    endereco.cep,
+                    endereco.cidade,
+                    endereco.bairro,
+                    endereco.rua,
+                    endereco.numero,
+                    CASE
+                        WHEN 
+                            dias_funcionamento.dia IS NOT NULL 
+                            AND dias_funcionamento.dia = WEEKDAY(DATE(NOW()))
+                            AND TIME(NOW()) >= dias_funcionamento.horario_abertura
+                            AND TIME(NOW()) <= dias_funcionamento.horario_fechamento
+                                THEN 'ABERTO'
+                        ELSE
+                            'FECHADO'
+                    END AS status_funcionamento,
+                    IF(dias_funcionamento.horario_abertura IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_abertura, '%H:%i'), 'FECHADO') AS horario_abertura,
+                    IF(dias_funcionamento.horario_fechamento IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_fechamento, '%H:%i'), 'FECHADO') AS horario_fechamento,
+                    IF(favorito.estabelecimento_id IS NOT NULL, 'true', 'false') AS estabelecimento_favorito
+                FROM estabelecimento
+                LEFT JOIN endereco
+                ON estabelecimento.id = endereco.estabelecimento_id
+                LEFT JOIN dias_funcionamento
+                ON (estabelecimento.id = dias_funcionamento.estabelecimento_id AND dias_funcionamento.dia = WEEKDAY(DATE(NOW())))
+                INNER JOIN favorito
+                ON estabelecimento.id = favorito.estabelecimento_id
             ";
 
             $estabelecimentos = $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);

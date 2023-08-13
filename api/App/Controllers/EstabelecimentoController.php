@@ -22,6 +22,16 @@
             return $response;
         }
 
+        public function getEstabelecimentosFavoritos(Request $request, Response $response, array $args): Response 
+        {
+            $estabelecimentoDAO = new EstabelecimentoDAO();
+            $estabelecimentosFavoritos = $estabelecimentoDAO->getAllFavorites();
+
+            $response = $response->withJson($estabelecimentosFavoritos);
+            
+            return $response;
+        }
+
         public function getEstabelecimento(Request $request, Response $response, array $args): Response 
         {
             if(isset($args['id'])){
