@@ -275,7 +275,7 @@ const confirmService = () => {
     const checkeds = document.querySelectorAll("input:checked");
     const servicosEscolhidos = Array.from(checkeds);
     servicosEscolhidos.forEach((servico, index) =>{
-        valorServico = Number(servico.getAttribute("data-value"));
+        valorServico += Number(servico.getAttribute("data-value"));
         servicosSelecionados.push(servico.name.split("servico-")[1]);
 
         servicos += `${servico.value}`;
