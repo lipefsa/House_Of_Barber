@@ -37,7 +37,7 @@
 
 
 
-<section class="gap-to-menu container">
+<section class="header-index gap-to-menu container">
     <div class="align-self-center text-center" id="header-text">
         <h3 class="hb-txt-white hb-w-900">
             SEU MARKETPLACE DE BARBEARIAS
@@ -48,18 +48,20 @@
         </h5>
     </div>
 
-    <div class="swiper mySwiper">
+   
+</section>
+
+<section class="swiper-section">
+<div class="swiper mySwiper">
         <div class="swiper-wrapper" id="cards-barbearias"></div>
-            
+
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-       
-    </div>
 
-    <!-- <button class="btn-pesquisa btn-position-fixed" data-toggle="modal" data-target="#modal-pesquisa">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </button> -->
-</section>
+    </div>
+    </section>
+
+
 <section class="content-index mt-3">
     <div class="container">
         <div class="sobre" id="sobre">
