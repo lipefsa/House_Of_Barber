@@ -115,23 +115,22 @@
     transform: translateY(-15px);
 }
 
-.area-cliente-card .status-aberto,
-.area-cliente-card .status-fechado {
+.swiper-slide .status-aberto,
+.swiper-slide .status-fechado {
     text-align: center;
-
     position: absolute;
     top: calc(100% - 258px);
 }
 
-.area-cliente-card .status-aberto {
+.swiper-slide .status-aberto {
     background: var(--secondary);
     width: 80px;
 }
 
-.area-cliente-card .status-fechado {
+.swiper-slide .status-fechado {
     background: var(--red);
     color: var(--white);
-    width: 86px;
+    width: 100px;
 }
 
 .area-cliente .modal-content,

@@ -66,8 +66,8 @@ const buildClienteArea = () => {
                                     <h5 class='card-title hb-w-700 hb-txt-secondary'>
                                         ${nome}
                                     </h5>
-                                    <div class='status-${status_funcionamento == "ABERTO" ? "aberto" : "fechado"} hb-txt-black hb-w-700'>
-                                    ${status_funcionamento}
+                                    <div class='status-${status_funcionamento == "ABERTO" ? "aberto" : "fechado"}'>
+                                    ${status_funcionamento} </div>
                                     <div class='card-text'>
                                         <p>
                                             <i class='fa fa-clock-o'></i>
@@ -104,7 +104,7 @@ const buildClienteArea = () => {
 
             const swiper = new Swiper(".mySwiper", {
                 slidesPerView: 3,
-                spaceBetween: 25,
+                spaceBetween: 30,
                 loop: true,
                 pagination: {
                   el: ".swiper-pagination",
