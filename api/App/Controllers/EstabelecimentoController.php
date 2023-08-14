@@ -50,6 +50,16 @@
             return $response;
         }
 
+        public function getEstabelecimentosRecentes(Request $request, Response $response, array $args): Response 
+        {
+            $estabelecimentoDAO = new EstabelecimentoDAO();
+            $estabelecimentos = $estabelecimentoDAO->getRecentStores();
+
+            $response = $response->withJson($estabelecimentos);
+            
+            return $response;
+        }
+
         public function getEstabelecimentoWithToken(Request $request, Response $response, array $args): Response 
         {   
             $headers = $request->getHeaders();

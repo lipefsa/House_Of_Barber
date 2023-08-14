@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-sm-12 align-self-center text-center" id="banner-login">
-                <img src="../assets/images/back-login.jpg" alt="login" id="img-login">
+                <img src="../assets/images/login2.png" alt="login" id="img-login">
             </div>
             <div class="col-md-5 col-sm-12 align-self-center mt-4 mb-4">
                 <div class="card hb-card mb-3">
@@ -43,7 +43,7 @@
                             </h6>
                             <h6 class="hb-txt-white text-justify pt-2 pb-2">
                                 Não tem uma conta?  
-                                <a href="/cliente/registrar" class="hb-txt-secondary text-decoration-none" id="registre-se">
+                                <a href="/house_of_barber/cliente/registrar" class="hb-txt-secondary text-decoration-none" id="registre-se">
                                     Registre-se
                                 </a>.
                             </h6>

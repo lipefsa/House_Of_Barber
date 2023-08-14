@@ -25,6 +25,7 @@
         $app->delete('/cliente', ClienteController::class.':deleteCliente');
     
         $app->get('/estabelecimentos', EstabelecimentoController::class.':getEstabelecimentos');
+        $app->get('/estabelecimentos/recentes', EstabelecimentoController::class.':getEstabelecimentosRecentes');
         $app->get('/estabelecimento[/{id}]', EstabelecimentoController::class.':getEstabelecimento');
         $app->get('/estabelecimentos/token', EstabelecimentoController::class.':getEstabelecimentoWithToken');
         $app->get('/estabelecimentos/perfil', EstabelecimentoController::class.':getPerfilEstabalecimento');
