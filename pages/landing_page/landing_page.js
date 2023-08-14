@@ -13,7 +13,8 @@ const buildClienteArea = () => {
     };
 
     request('./api/estabelecimentos/recentes', headers, 'GET', '', (data) => {
-        const cardsBarbeariaWrapper = document.querySelector("#cards-barbearia");
+        const cardsBarbeariaWrapper = document.querySelector("#cards-barbearias");
+        console.log(cardsBarbeariaWrapper);
 
         if (data.error == "true") {
             msgWithRedirect("error", "Ooops!", data.message, "/house_of_barber");
@@ -93,18 +94,17 @@ const buildClienteArea = () => {
                                 </div>
                             </div>
                         </div>
-                    `;  //*/
-                       // swiper.appendSlide(slide);
+                    `; 
+                       
                 })
-               // swiper.update();
-
+               
                 closeLoading();
 
             }
 
             const swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
+                slidesPerView: 3,
+                spaceBetween: 25,
                 loop: true,
                 pagination: {
                   el: ".swiper-pagination",
@@ -114,11 +114,13 @@ const buildClienteArea = () => {
                   nextEl: ".swiper-button-next",
                   prevEl: ".swiper-button-prev",
                 },
-              });
+              }); 
 
         }
     });
 }
+
+buildClienteArea();
 
 
 

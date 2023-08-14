@@ -8,24 +8,7 @@
             <i class="fa fa-times icon-close"></i>
             <i class="fa fa-bars icon-open"></i>
         </button>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-        <script>
-            const swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-            });
 
-        </script>
 
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ml-auto hb-txt-secondary hb-w-700">
@@ -65,23 +48,14 @@
         </h5>
     </div>
 
-    <div class="area-cliente">
-        <div class="row" id="cards-barbearias">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">Slide 1</div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
-                    <div class="swiper-slide">Slide 5</div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="cards-barbearias"></div>
+            
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
+
     <!-- <button class="btn-pesquisa btn-position-fixed" data-toggle="modal" data-target="#modal-pesquisa">
             <i class="fa fa-search" aria-hidden="true"></i>
         </button> -->
