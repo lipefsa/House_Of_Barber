@@ -1,4 +1,4 @@
-<section class="gap-to-menu container">
+<section class="gap-to-menu container" id="area-cliente">
     <div class="area-cliente">
         <div class="row" id="cards-barbearias"></div>
     </div>

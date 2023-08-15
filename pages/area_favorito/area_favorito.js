@@ -79,7 +79,7 @@ const buildClienteArea = () =>{
         'token': token
     };
 
-    request('./api/estabelecimentos', headers, 'GET', '', (data) => {
+    request(`${apiPath}/estabelecimentos/favoritos`, headers, 'GET', '', (data) => {
         const cardsBarbeariaWrapper = document.querySelector("#cards-barbearias");
 
         if(data.error == "true"){
@@ -113,16 +113,16 @@ const buildClienteArea = () =>{
                     }
 
                     if(foto_perfil == null || foto_perfil == ""){
-                        fotoPerfil = `assets/images/cliente-sem-ft.png`;
+                        fotoPerfil = `../assets/images/cliente-sem-ft.png`;
                     }
                     else{
-                        fotoPerfil = `uploads/barbearia/${foto_perfil}`;
+                        fotoPerfil = `../uploads/barbearia/${foto_perfil}`;
                     }
 
                     cardsBarbeariaWrapper.innerHTML += `
                         <div class='col-md-3 col-sm-12 mb-4'>
-                            <div class='card area-cliente-card'>
-                                <div class='area-cliente-card-header'>
+                            <div class='card area-favorito-card'>
+                                <div class='area-favorito-card-header'>
                                     <img 
                                         class='card-img-top' 
                                         src='${fotoPerfil}' 
@@ -178,9 +178,9 @@ const buildClienteArea = () =>{
                 closeLoading();
             }
             else {
-                cardsBarbeariaWrapper.closest('#area-favorito').classList.add('area-cliente-no-content')
+                cardsBarbeariaWrapper.closest('#area-favorito').classList.add('area-favorito-no-content')
                 cardsBarbeariaWrapper.innerHTML = `
-                    <h2>Ainda não há barbearias</h2>
+                    <h2>Ainda não há favoritos</h2>
                 `;
 
                 closeLoading();
