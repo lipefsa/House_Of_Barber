@@ -11,8 +11,43 @@
             $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
             $basename = bin2hex(random_bytes(8).uniqid());
             $filename = sprintf('%s.%0.8s', $basename, $extension);
+            $filePath = $directory . DIRECTORY_SEPARATOR . $filename;
 
-            $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
+            $uploadedFile->moveTo($filePath);
+
+            $width = 328;
+            $height = 215;
+
+            switch ($extension) {
+                case 'png':
+                    $sourceImage = imagecreatefrompng($filePath);
+                    break;
+                case 'jpeg' || 'jpg':
+                    $sourceImage = imagecreatefromjpeg($filePath);
+                    break;
+                default:
+                    return false;
+            }
+
+            $destinationImage = imagecreatetruecolor($width, $height);
+            imagecopyresampled($destinationImage, $sourceImage, 0, 0, 0, 0, $width, $height, imagesx($sourceImage), imagesy($sourceImage));
+
+            $resizedFilename = 'resized_' . $filename;
+            $resizedImagePath = $directory . DIRECTORY_SEPARATOR . $resizedFilename;
+
+            switch ($extension) {
+                case 'png':
+                    imagepng($destinationImage, $resizedImagePath);
+                    break;
+                case 'jpeg' || 'jpg':
+                    imagejpeg($destinationImage, $resizedImagePath);
+                    break;
+                default:
+                    return false;
+            }
+
+            imagedestroy($sourceImage);
+            imagedestroy($destinationImage);
 
             return $filename;
         }

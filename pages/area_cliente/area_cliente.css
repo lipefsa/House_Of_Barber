@@ -9,6 +9,7 @@
 
 .area-cliente-card .card-img-top{
     min-height: 176px;
+    max-height: 328px;
 }
 
 .area-cliente-card{

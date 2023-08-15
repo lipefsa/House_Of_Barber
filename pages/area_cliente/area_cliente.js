@@ -46,7 +46,7 @@ const buildClienteArea = () =>{
                         fotoPerfil = `assets/images/cliente-sem-ft.png`;
                     }
                     else{
-                        fotoPerfil = `uploads/barbearia/${foto_perfil}`;
+                        fotoPerfil = `uploads/barbearia/resized_${foto_perfil}`;
                     }
 
                     cardsBarbeariaWrapper.innerHTML += `
