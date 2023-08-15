@@ -35,31 +35,27 @@
     </div>
 </nav>
 
-
-
-<section class="header-index gap-to-menu container">
-    <div class="align-self-center text-center" id="header-text">
-        <h3 class="hb-txt-white hb-w-900">
-            SEU MARKETPLACE DE BARBEARIAS
-        </h3>
-        <h5 class="hb-txt-white hb-w-700 pt-1">
-            Gerencie sua barbearia na palma da sua mão
-            <br></br>
-        </h5>
+<section class="header-index gap-to-menu">
+    <div class="container">
+        <div class="align-self-center text-center" id="header-text">
+            <h3 class="hb-txt-white hb-w-900">
+                SEU MARKETPLACE DE BARBEARIAS
+            </h3>
+            <h5 class="hb-txt-white hb-w-700 pt-1">
+                Gerencie sua barbearia na palma da sua mão
+            </h5>
+        </div>
     </div>
-
-   
 </section>
 
-<section class="swiper-section">
-    <div class="swiper mySwiper">
+<section class="container swiper-section establishments-carousel-section">
+    <h3 class="hb-txt-secondary hb-w-700">
+        Confira algumas de nossas barbearias
+    </h3>
+    <div class="swiper establishments-carousel">
         <div class="swiper-wrapper" id="cards-barbearias"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
     </div>
 </section>
-
 
 <section class="content-index mt-3">
     <div class="container">

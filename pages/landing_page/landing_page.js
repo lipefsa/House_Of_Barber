@@ -1,7 +1,6 @@
 const apiPath = "/house_of_barber/api";
 
 const buildClienteArea = () => {
-
     loading();
 
     const token = Cookies.get('user_token');
@@ -13,7 +12,10 @@ const buildClienteArea = () => {
 
     request('./api/estabelecimentos/recentes', headers, 'GET', '', (data) => {
         const cardsBarbeariaWrapper = document.querySelector("#cards-barbearias");
-        console.log(cardsBarbeariaWrapper);
+        if(!cardsBarbeariaWrapper) { 
+            closeLoading();
+            return;
+        };
 
         if (data.error == "true") {
             msgWithRedirect("error", "Ooops!", data.message, "/house_of_barber");
@@ -54,19 +56,21 @@ const buildClienteArea = () => {
                     cardsBarbeariaWrapper.innerHTML += `
                         <div class='swiper-slide'>
                             <div class='landing-page-cliente-card'>
-                                <img 
-                                    class='card-img-top' 
-                                    src='${fotoPerfil}' 
-                                    alt='Imagem de capa do card'
-                                />
-                               
+                                <div class='landing-page-cliente-card-header'>
+                                    <img 
+                                        class='card-img-top' 
+                                        src='${fotoPerfil}' 
+                                        alt='Imagem de capa do card'
+                                    />
+                                    <div class='status-${status_funcionamento == "ABERTO" ? "aberto" : "fechado"}'>
+                                    ${status_funcionamento} </div>
+                                    </div>
                                 </div>
                                 <div class='card-body hb-txt-white'>
                                     <h5 class='card-title hb-w-700 hb-txt-secondary'>
                                         ${nome}
                                     </h5>
-                                    <div class='status-${status_funcionamento == "ABERTO" ? "aberto" : "fechado"}'>
-                                    ${status_funcionamento} </div>
+                                    
                                     <div class='card-text'>
                                         <p>
                                             <i class='fa fa-clock-o'></i>
@@ -85,7 +89,7 @@ const buildClienteArea = () => {
                                         </p>            
                                     </div>
                                     <a 
-                                        href='/house_of_barber/barbearias/${estabelecimento_id}' 
+                                        href='/house_of_barber/cliente/login' 
                                         class='btn hb-btn-secondary hb-w-700 hb-full-width'
                                     >
                                         Agendar
@@ -94,27 +98,21 @@ const buildClienteArea = () => {
                             </div>
                         </div>
                     `;
-
                 })
 
                 closeLoading();
-
             }
 
-            const swiper = new Swiper(".mySwiper", {
-                slidesPerView: 3,
+            const swiper = new Swiper(".establishments-carousel", {
+                slidesPerView: 1.25,
                 spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
+                loop: false,
+                breakpoints: {
+                    1200: {
+                        slidesPerView: 4,
+                    }
+                }
             });
-
         }
     });
 }
