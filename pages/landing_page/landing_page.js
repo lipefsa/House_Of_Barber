@@ -109,7 +109,7 @@ const buildClienteArea = () => {
                 loop: false,
                 breakpoints: {
                     1200: {
-                        slidesPerView: 4,
+                        slidesPerView: 3.5,
                     }
                 }
             });
