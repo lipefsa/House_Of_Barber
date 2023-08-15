@@ -52,14 +52,13 @@
 </section>
 
 <section class="swiper-section">
-<div class="swiper mySwiper">
+    <div class="swiper mySwiper">
         <div class="swiper-wrapper" id="cards-barbearias"></div>
-
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
 
     </div>
-    </section>
+</section>
 
 
 <section class="content-index mt-3">

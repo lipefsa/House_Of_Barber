@@ -1,6 +1,5 @@
 const apiPath = "/house_of_barber/api";
 
-
 const buildClienteArea = () => {
 
     loading();
@@ -54,7 +53,7 @@ const buildClienteArea = () => {
 
                     cardsBarbeariaWrapper.innerHTML += `
                         <div class='swiper-slide'>
-                            <div class='card area-cliente-card'>
+                            <div class='landing-page-cliente-card'>
                                 <img 
                                     class='card-img-top' 
                                     src='${fotoPerfil}' 
@@ -94,10 +93,10 @@ const buildClienteArea = () => {
                                 </div>
                             </div>
                         </div>
-                    `; 
-                       
+                    `;
+
                 })
-               
+
                 closeLoading();
 
             }
@@ -107,21 +106,17 @@ const buildClienteArea = () => {
                 spaceBetween: 30,
                 loop: true,
                 pagination: {
-                  el: ".swiper-pagination",
-                  clickable: true,
+                    el: ".swiper-pagination",
+                    clickable: true,
                 },
                 navigation: {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
                 },
-              }); 
+            });
 
         }
     });
 }
 
 buildClienteArea();
-
-
-
-

@@ -1,5 +1,8 @@
 .index {
     font-family: 'Montserrat', sans-serif;
+    background-image: url("../../assets/images/back-index-2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 
 .header-index {
@@ -7,12 +10,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     height: 100vh;
     width: 100%;
-
-    background-image: url("../../assets/images/back-index-2.jpg");
-    background-repeat: no-repeat;
 }
 
 .header-index h3 {
@@ -24,7 +23,7 @@
 }
 
 #header-text {
-    margin-bottom: 250px;
+    margin-bottom: 150px;
 }
 
 .content-index .sobre-img {
@@ -103,16 +102,16 @@
     
 }
 
-.area-cliente .card-title {
+.landing-page-cliente-card .card-title {
     font-size: 22px;
 }
 
-.area-cliente-card .card-img-top {
+.landing-page-cliente-card .card-img-top {
     min-height: 100px;
     max-height: 200px;
 }
 
-.area-cliente-card {
+.landing-page-cliente-card {
     width: 100%;
     height: auto;
     background: var(--primary);
@@ -120,7 +119,7 @@
     transition: all 0.5s ease-out;
 }
 
-.area-cliente-card:hover {
+.landing-page-cliente-card:hover {
     border: 1px solid var(--white);
     box-shadow: 0 0 0.5em var(--white);
     transform: translateY(-15px);
@@ -144,7 +143,7 @@
     width: 100px;
 }
 
-.area-cliente .modal-content,
+.landing-page .modal-content,
 #modal-perfil .modal-content,
 #modal-agendamentos .modal-content {
     background: var(--primary);
