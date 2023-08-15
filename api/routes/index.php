@@ -17,6 +17,7 @@
     $app->post('/cliente', ClienteController::class.':insertCliente');
     $app->post('/estabelecimento', EstabelecimentoController::class.':insertEstabelecimento');
     $app->post('/endereco', EnderecoController::class.':insertEndereco');
+    $app->get('/estabelecimentos/recentes', EstabelecimentoController::class.':getEstabelecimentosRecentes');
 
     $app->group('', function () use ($app){
         $app->get('/clientes', ClienteController::class.':getClientes');

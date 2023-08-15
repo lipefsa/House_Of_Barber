@@ -15,46 +15,161 @@
     background-repeat: no-repeat;
 }
 
-.header-index h3{
+.header-index h3 {
     font-size: min(30px, 7vw);
 }
 
-.header-index h5{
+.header-index h5 {
     font-size: min(22px, 6vw);
 }
 
-.content-index .sobre-img{
+#header-text {
+    margin-bottom: 150px;
+}
+
+.content-index .sobre-img {
+    margin-top: 100px;
     width: 100%;
     height: auto;
 }
 
-.content-index p > span{
+.content-index p>span {
     color: var(--secondary);
 }
 
-.content-index .vantagens{
+.content-index .vantagens {
     text-align: center;
 }
 
-.content-index .vantagens img{
+.content-index .vantagens img {
     width: 100px;
     height: auto;
     text-align: center;
 }
 
-.content-index .colaboradores{
+.content-index .colaboradores {
     text-align: center;
 }
 
-.content-index .colaboradores img{
+.content-index .colaboradores img {
     border-radius: 50%;
     width: 100%;
     height: auto;
 }
 
-.content-index .colaboradores .redes-sociais a{
+.content-index .colaboradores .redes-sociais a {
     color: #fff;
     font-size: 30px;
     text-decoration: none;
 }
 
+.establishments-carousel-section {
+    margin: 3rem auto 2rem;
+}
+
+.establishments-carousel {
+    margin-top: 2rem;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #28282c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-wrapper{
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-wrapper .swiper-slide{
+    width: 100px;
+    height: auto;
+    text-align: center;
+    
+}
+
+.landing-page-cliente-card-header {
+    position: relative;
+}
+
+.landing-page-cliente-card .card-title {
+    font-size: 22px;
+}
+
+.landing-page-cliente-card .card-img-top {
+    min-height: 176px;
+    max-height: 255px;
+}
+
+.landing-page-cliente-card {
+    width: 100%;
+    height: auto;
+    background: var(--primary);
+    user-select: none;
+    transition: all 0.5s ease-out;
+}
+
+.landing-page-cliente-card:hover {
+    border: 1px solid var(--white);
+    box-shadow: 0 0 0.5em var(--white);
+    transform: translateY(-15px);
+}
+
+.swiper-slide .status-aberto,
+.swiper-slide .status-fechado {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.swiper-slide .status-aberto {
+    background: var(--secondary);
+    width: 80px;
+}
+
+.swiper-slide .status-fechado {
+    background: var(--red);
+    color: var(--white);
+    width: 100px;
+}
+
+.landing-page .modal-content,
+#modal-perfil .modal-content,
+#modal-agendamentos .modal-content {
+    background: var(--primary);
+}
+
+.area-cliente-card .card-title {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 576px){
+    .header-index{
+        height: 70vh;
+    }
+}

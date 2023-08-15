@@ -101,6 +101,42 @@
             return $estabelecimentos;
         }
 
+        public function getRecentStores() {
+            $query = "SELECT 
+            estabelecimento.id AS estabelecimento_id,
+            estabelecimento.nome,
+            estabelecimento.tipo,
+            estabelecimento.telefone,
+            estabelecimento.cnpj,
+            estabelecimento.foto_perfil,
+            endereco.cep,
+            endereco.cidade,
+            endereco.bairro,
+            endereco.rua,
+            endereco.numero,
+            CASE
+                WHEN 
+                    dias_funcionamento.dia IS NOT NULL 
+                    AND dias_funcionamento.dia = WEEKDAY(DATE(NOW()))
+                    AND TIME(NOW()) >= dias_funcionamento.horario_abertura
+                    AND TIME(NOW()) <= dias_funcionamento.horario_fechamento
+                        THEN 'ABERTO'
+                ELSE
+                    'FECHADO'
+            END AS status_funcionamento,
+            IF(dias_funcionamento.horario_abertura IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_abertura, '%H:%i'), 'FECHADO') AS horario_abertura,
+            IF(dias_funcionamento.horario_fechamento IS NOT NULL, TIME_FORMAT(dias_funcionamento.horario_fechamento, '%H:%i'), 'FECHADO') AS horario_fechamento
+        FROM estabelecimento
+        LEFT JOIN endereco
+        ON estabelecimento.id = endereco.estabelecimento_id
+        LEFT JOIN dias_funcionamento
+        ON (estabelecimento.id = dias_funcionamento.estabelecimento_id AND dias_funcionamento.dia = WEEKDAY(DATE(NOW())))
+        ORDER BY data_cadastro DESC LIMIT 5";
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+            return $statement->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
         public function findById(string $id): array
         {
             $query = "SELECT 
@@ -326,4 +362,6 @@
 
             return $result;
         }
+
+       
     }
