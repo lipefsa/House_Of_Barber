@@ -9,9 +9,11 @@
     use App\DAO\MySQL\HouseOfBarber\AgendamentoServicoDAO;
     use App\Models\MySQL\HouseOfBarber\AgendamentoServicoModel;
     use App\Assets\BaseLib\App\Utilities;
+    use App\Assets\BaseLib\App\Email;
     use App\DAO\MySQL\HouseOfBarber\AutenticarDAO;
     use App\Models\MySQL\HouseOfBarber\AutenticarModel;
-
+    use App\DAO\MySQL\HouseOfBarber\ClienteDAO;
+    
     final class AgendamentoController{
         public function getAgendamentos(Request $request, Response $response, array $args): Response 
         {
@@ -242,6 +244,7 @@
                 
             $autenticarDAO = new AutenticarDAO();
             $autenticarModel = new AutenticarModel();
+            $clienteDAO = new ClienteDAO();
 
             $autenticarModel->setToken($token);
 
@@ -249,6 +252,9 @@
 
             if($tokenData && count($tokenData) > 0){
                 $id = $tokenData[0]["id_usuario"];
+                $userData = $clienteDAO->findById($id);
+                $userName = $userData[0]['nome'];
+                $userEmail = $userData[0]['email'];
 
                 if($data && count($data) > 0){
                     $fieldsNecessary = ['estabelecimento_id', 'data_agendamento', 'horario_agendamento', 'valor', 'status'];
@@ -286,6 +292,20 @@
                                     "scheduling_id" => $insertedId,
                                     "error" => "false"
                                 ]);
+
+                                $scheduleTime = strtotime($data['data_agendamento']);
+                                $formattedScheduleTime = date("d/m/Y", $scheduleTime);
+
+                                $email = new Email();
+                    
+                                $email->send(
+                                    "contatohouseofbarber1@gmail.com",
+                                    "contatohouseofbarber",
+                                    "$userEmail",
+                                    "$userName",
+                                    "Agendamento realizado",
+                                    "Seu agendamento no valor de R$".$data['valor']." foi realizado com sucesso e está marcado para o dia ".$formattedScheduleTime." às ".$data['horario_agendamento'].". <a href='http://localhost/house_of_barber/cliente'>Clique aqui</a> e consulte mais informações."
+                                );
                             }
                             else{
                                 $response = $response->withJson([
