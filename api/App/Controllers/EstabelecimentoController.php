@@ -14,10 +14,78 @@
     final class EstabelecimentoController{
         public function getEstabelecimentos(Request $request, Response $response, array $args): Response 
         {
-            $estabelecimentoDAO = new EstabelecimentoDAO();
-            $estabelecimentos = $estabelecimentoDAO->getAll();
+            $headers = $request->getHeaders();
 
-            $response = $response->withJson($estabelecimentos);
+            if(isset($headers['HTTP_TOKEN'])){
+                $token = $headers['HTTP_TOKEN'][0];
+                
+                $autenticarDAO = new AutenticarDAO();
+                $autenticarModel = new AutenticarModel();
+
+                $autenticarModel->setToken($token);
+
+                $tokenData = $autenticarDAO->findUserByToken($autenticarModel);
+
+                if($tokenData && count($tokenData) > 0){
+                    $idUsuario = $tokenData[0]["id_usuario"];
+
+                    $estabelecimentoDAO = new EstabelecimentoDAO();
+                    $estabelecimentos = $estabelecimentoDAO->getAll($idUsuario);
+
+                    $response = $response->withJson($estabelecimentos);
+                }
+                else{
+                    $response = $response->withJson([
+                        "message" => "Token inválido",
+                        "error" => "true"
+                    ]);
+                }
+            }
+            else{
+                $response = $response->withJson([
+                    "message" => "Informe o token do usuário logado",
+                    "error" => "true"
+                ]);
+            }                   
+            
+            return $response;
+        }
+
+        public function getEstabelecimentosFavoritos(Request $request, Response $response, array $args): Response 
+        {
+            $headers = $request->getHeaders();
+
+            if(isset($headers['HTTP_TOKEN'])){
+                $token = $headers['HTTP_TOKEN'][0];
+                
+                $autenticarDAO = new AutenticarDAO();
+                $autenticarModel = new AutenticarModel();
+
+                $autenticarModel->setToken($token);
+
+                $tokenData = $autenticarDAO->findUserByToken($autenticarModel);
+
+                if($tokenData && count($tokenData) > 0){
+                    $idUsuario = $tokenData[0]["id_usuario"];
+
+                    $estabelecimentoDAO = new EstabelecimentoDAO();
+                    $estabelecimentosFavoritos = $estabelecimentoDAO->getAllFavorites($idUsuario);
+        
+                    $response = $response->withJson($estabelecimentosFavoritos);
+                }
+                else{
+                    $response = $response->withJson([
+                        "message" => "Token inválido",
+                        "error" => "true"
+                    ]);
+                }
+            }
+            else{
+                $response = $response->withJson([
+                    "message" => "Informe o token do usuário logado",
+                    "error" => "true"
+                ]);
+            }                   
             
             return $response;
         }

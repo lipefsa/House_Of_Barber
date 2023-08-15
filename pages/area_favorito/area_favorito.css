@@ -1,22 +1,21 @@
-#area-cliente {
+#area-favorito {
     flex: 1;
 }
 
-.area-cliente {
+.area-favorito {
     margin-top: 2rem;
     justify-content: center;
 }
 
-.area-cliente .card-title {
+.area-favorito .card-title {
     font-size: 22px;
 }
 
-.area-cliente-card .card-img-top {
+.area-favorito-card .card-img-top {
     min-height: 176px;
-    max-height: 328px;
 }
 
-.area-cliente-card {
+.area-favorito-card {
     width: 100%;
     height: auto;
     background: var(--primary);
@@ -24,53 +23,53 @@
     transition: all 0.5s ease-out;
 }
 
-.area-cliente-card:hover {
+.area-favorito-card:hover {
     border: 1px solid var(--white);
     box-shadow: 0 0 0.5em var(--white);
     transform: translateY(-15px);
 }
 
-.area-cliente-card .status-aberto,
-.area-cliente-card .status-fechado {
+.area-favorito-card .status-aberto,
+.area-favorito-card .status-fechado {
     text-align: center;
 
     position: absolute;
     bottom: 0;
 }
 
-.area-cliente-card .status-aberto {
+.area-favorito-card .status-aberto {
     background: var(--secondary);
     width: 80px;
 }
 
-.area-cliente-card .status-fechado {
+.area-favorito-card .status-fechado {
     background: var(--red);
     color: var(--white);
     width: 86px;
 }
 
-.area-cliente-card-header {
+.area-favorito-card-header {
     position: relative;
 }
 
-.area-cliente .modal-content,
+.area-favorito .modal-content,
 #modal-perfil .modal-content,
 #modal-agendamentos .modal-content {
     background: var(--primary);
 }
 
-.area-cliente-card .card-title {
+.area-favorito-card .card-title {
     font-size: 20px;
 }
 
-.area-cliente-no-content {
+.area-favorito-no-content {
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
 }
 
-.area-cliente-no-content h2 {
+.area-favorito-no-content h2 {
    font-weight: 700;
    color: var(--white);
 }

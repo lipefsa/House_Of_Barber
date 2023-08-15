@@ -8,7 +8,10 @@
         private $email;
         private $senha;  
 
-        public function __construct(string $email, string $senha)
+        public function __construct(
+            string $email = "contatohouseofbarber1@gmail.com",
+            string $senha = "F899ECD01693AE5DC29E6BE8C3BAB5EC0C37"
+        )
         {
             $this->email = $email;
             $this->senha = $senha;
@@ -33,10 +36,10 @@
             $mail->IsSMTP();   
 
             // Enviar por SMTP 
-            $mail->Host = "email.tel.inf.br"; 
+            $mail->Host = "smtp.elasticemail.com"; 
 
             // Você pode alterar este parametro para o endereço de SMTP do seu provedor 
-            $mail->Port = 26; 
+            $mail->Port = 2525; 
 
             // Habilita a autenticação SMTP
             $mail->SMTPAuth = true; 

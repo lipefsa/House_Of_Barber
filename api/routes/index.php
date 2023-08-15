@@ -7,6 +7,7 @@
     use App\Controllers\AutenticarController;
     use App\Controllers\DiasFuncionamentoController;
     use App\Controllers\EnderecoController;
+    use App\Controllers\FavoritoController;
     use App\Controllers\ServicoController;
 
     $app = new \Slim\App(slimConfiguration());
@@ -26,6 +27,7 @@
         $app->delete('/cliente', ClienteController::class.':deleteCliente');
     
         $app->get('/estabelecimentos', EstabelecimentoController::class.':getEstabelecimentos');
+        $app->get('/estabelecimentos/favoritos', EstabelecimentoController::class.':getEstabelecimentosFavoritos');
         $app->get('/estabelecimento[/{id}]', EstabelecimentoController::class.':getEstabelecimento');
         $app->get('/estabelecimentos/token', EstabelecimentoController::class.':getEstabelecimentoWithToken');
         $app->get('/estabelecimentos/perfil', EstabelecimentoController::class.':getPerfilEstabalecimento');
@@ -37,6 +39,12 @@
         $app->get('/endereco[/{id}]', EnderecoController::class.':getEndereco');
         $app->put('/endereco', EnderecoController::class.':updateEndereco');
         $app->delete('/endereco', EnderecoController::class.':deleteEndereco');
+
+        $app->get('/favoritos', FavoritoController::class.':getFavoritos');
+        $app->get('/favorito[/{id}]', FavoritoController::class.':getFavorito');
+        $app->post('/favorito', FavoritoController::class.':insertFavorito');
+        $app->put('/favorito', FavoritoController::class.':updateFavorito');
+        $app->delete('/favorito', FavoritoController::class.':deleteFavorito');
 
         $app->get('/servicos', ServicoController::class.':getServicos');
         $app->get('/servico[/{id}]', ServicoController::class.':getServico');

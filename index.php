@@ -33,6 +33,10 @@
             require_once "pages/area_cliente/area_cliente.php";
         });
 
+        $app->get('/cliente/favoritos', function(){
+            require_once "pages/area_favorito/area_favorito.php";
+        });
+
         $app->get('/cliente/perfil', function(){
             require_once "pages/perfil_cliente/perfil_cliente.php";
         });

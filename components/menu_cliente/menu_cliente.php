@@ -37,16 +37,14 @@
                         MEUS AGENDAMENTOS
                     </a>
                 </li>
-                <!-- <li class="nav-item align-self-center">                   
+                <li class="nav-item align-self-center">                   
                     <a 
                         class="nav-link" 
-                        data-toggle="modal"
-                        data-target="#modal-favoritos"
-                        href="#"
+                        href="/house_of_barber/cliente/favoritos"
                     >
                         MEUS FAVORITOS
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item align-self-center">                   
                     <a 
                         class="nav-link" 
