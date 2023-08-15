@@ -16,6 +16,7 @@
     $app->post('/cliente', ClienteController::class.':insertCliente');
     $app->post('/estabelecimento', EstabelecimentoController::class.':insertEstabelecimento');
     $app->post('/endereco', EnderecoController::class.':insertEndereco');
+    $app->get('/estabelecimentos/recentes', EstabelecimentoController::class.':getEstabelecimentosRecentes');
 
     $app->group('', function () use ($app){
         $app->get('/clientes', ClienteController::class.':getClientes');
@@ -25,7 +26,6 @@
         $app->delete('/cliente', ClienteController::class.':deleteCliente');
     
         $app->get('/estabelecimentos', EstabelecimentoController::class.':getEstabelecimentos');
-        $app->get('/estabelecimentos/recentes', EstabelecimentoController::class.':getEstabelecimentosRecentes');
         $app->get('/estabelecimento[/{id}]', EstabelecimentoController::class.':getEstabelecimento');
         $app->get('/estabelecimentos/token', EstabelecimentoController::class.':getEstabelecimentoWithToken');
         $app->get('/estabelecimentos/perfil', EstabelecimentoController::class.':getPerfilEstabalecimento');
